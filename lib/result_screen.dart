@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_flutter/data/questions.dart';
 import 'package:quiz_flutter/result_list.dart';
 
@@ -25,6 +26,12 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final userResult  = getUserResult();
+    final questionLength = questions.length;
+    final correctQuestionAnswer = userResult.where((data) {
+      return data['user_answer'] == data['question_answer'];
+    }).length;
+
     return SizedBox(
         width: double.infinity,
         child: Container(
@@ -32,11 +39,24 @@ class ResultScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('You guys correct X out of Y questions'),
+              Text(
+                'You guys answered $correctQuestionAnswer out of $questionLength questions correctly!',
+                style: GoogleFonts.lato(
+                    fontSize: 20,
+                    color: const Color.fromARGB(255, 226, 182, 236),
+                    fontWeight: FontWeight.bold
+                ),
+                textAlign: TextAlign.center,
+              ),
               const SizedBox(height: 40,),
-              ResultList(resultUser: getUserResult()),
+              ResultList(resultUser: userResult),
               const SizedBox(height: 20,),
-              TextButton(onPressed: () {}, child: const Text('Restart Quiz'))
+              ElevatedButton.icon(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
+                  icon: const Icon(Icons.restart_alt_rounded, color: Colors.white),
+                  label: Text('Restart Quiz', style: GoogleFonts.lato(color: Colors.white, fontWeight: FontWeight.w600),)
+              )
             ],
           ),
         )
