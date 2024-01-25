@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_flutter/data/questions.dart';
-import 'package:quiz_flutter/result_list.dart';
+import 'package:quiz_flutter/result_component/result_list.dart';
 
 class ResultScreen extends StatelessWidget {
 
-  const ResultScreen({super.key, required this.chosenAnswer});
+  const ResultScreen({super.key, required this.chosenAnswer, required this.restartQuiz});
 
   final List<String> chosenAnswer;
+  final Function() restartQuiz;
 
   List<Map<String, Object>> getUserResult() {
     final List<Map<String, Object>> result = [];
@@ -52,7 +53,7 @@ class ResultScreen extends StatelessWidget {
               ResultList(resultUser: userResult),
               const SizedBox(height: 20,),
               ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: restartQuiz,
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
                   icon: const Icon(Icons.restart_alt_rounded, color: Colors.white),
                   label: Text('Restart Quiz', style: GoogleFonts.lato(color: Colors.white, fontWeight: FontWeight.w600),)
@@ -60,7 +61,6 @@ class ResultScreen extends StatelessWidget {
             ],
           ),
         )
-
     );
   }
 

@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
               OutlinedButton.icon(
                   onPressed: startQuiz ,
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlueAccent,
+                      backgroundColor: const Color.fromARGB(255, 98, 50, 168),
                       foregroundColor: Colors.white,
                   ),
                   icon: const Icon(Icons.arrow_forward_rounded),

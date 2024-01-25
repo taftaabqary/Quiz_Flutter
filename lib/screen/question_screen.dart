@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_flutter/models/question_quiz.dart';
 
-import 'button_answer.dart';
-import 'data/questions.dart';
+import '../button_answer.dart';
+import '../data/questions.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key, required this.getUserAnswer});
