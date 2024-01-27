@@ -15,8 +15,10 @@ class ResultSummary extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ResultNumberQuestion(numberCorrectAnswer: correctAnswer,
-            numberQuestionIndex: resultSummaryIndex),
+        ResultNumberQuestion(
+            numberCorrectAnswer: correctAnswer,
+            numberQuestionIndex: resultSummaryIndex
+        ),
         Expanded(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 16),
